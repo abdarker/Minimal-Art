@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <version title="v1.0.0" />
+    <item text="This is my very first app."/>
+    <item text="Please support me if you like my work, there is donate section for it!"/>
+    <item text="Thanks For Installing!"/>
+    <item text="" /> <!-- this one is empty and therefore ignored -->
+</resources>

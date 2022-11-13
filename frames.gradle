@@ -1,0 +1,50 @@
+
+dependencies {
+    def exclusions = {
+        exclude group: 'com.android.support'
+        exclude group: 'com.google.code'
+        exclude group: 'org.jetbrains'
+    }
+    // Kotlin
+    api libraries.kotlin
+    // Architecture Components
+    api libraries.room, exclusions
+    kapt libraries.roomCompiler
+    // Permissions
+    api libraries.permissions, exclusions
+    // Material Dialogs
+    api libraries.dialogsCommons, exclusions
+    // Glide Image Loading
+    api libraries.glide, exclusions
+    api libraries.gliderv, exclusions
+    kapt libraries.glideCompiler
+    // kext
+    // api libraries.kext
+    api(libraries.archHelpers) {
+        transitive = true
+    }
+    api libraries.ziv, exclusions
+    // Sectioned RecyclerView
+    api libraries.sectionedRecyclerView, exclusions
+    // RecyclerView FastScroll
+    api libraries.rvFastScroll, exclusions
+    // Chips
+    api libraries.chips, exclusions
+    // In-App Purchases
+    api libraries.iaps, exclusions
+    // Muzei API
+    api libraries.muzeiApi, exclusions
+    // Licenses Dialog
+    api libraries.licenses, exclusions
+    // License Checker
+    api libraries.checker, exclusions
+}
+
+configurations {
+    all*.exclude module: 'constraint'
+    all*.exclude module: 'transition'
+    all*.exclude module: 'mediarouter-v7'
+    all*.exclude module: 'support-media-compat'
+    all*.exclude module: 'support-v4'
+    all*.exclude group: 'com.google.code'
+}

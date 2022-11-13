@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!--<string-array name="credits_photos" formatted="false" tools:ignore="TypographyDashes">
+        <item>https://lh3.googleusercontent.com/-QPu6Md_Rjw4/AAAAAAAAAAI/AAAAAAAAABM/xXIIHvX-hLA/s512-p-rw-no/photo.jpg</item>
+    </string-array>
+
+    <string-array name="credits_titles">
+        <item>Ab</item>
+    </string-array>
+
+    <string-array name="credits_descriptions">
+        <item>I enjoy developing websites and apps.Also I love pancakes!!</item>
+    </string-array>
+
+    <string-array name="credits_buttons">
+        <item>Twitter|Website|Github</item>
+    </string-array>
+
+    <string-array name="credits_links">
+        <item>https://www.twitter.com/abdarker|https://abdarker.github.io|https://github.com/abdarker</item>
+
+    </string-array>-->
+</resources>

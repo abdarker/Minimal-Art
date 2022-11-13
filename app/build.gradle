@@ -1,0 +1,101 @@
+
+// TODO: Remove comment marks to enable
+/*
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.11.2'
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+*/
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'frames'
+            keyPassword 'frames'
+            storeFile file('ab.jks')
+            storePassword 'frames'
+        }
+        config {
+            keyAlias 'abdarker'
+            keyPassword 'i74chi'
+            storeFile file('D:/ASUS/Documents/Key/minimalart.jks')
+            storePassword 'i74chi'
+        }
+    }
+
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = details.appId + "-v${variant.versionName}-${variant.name}.apk"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        disable 'MissingTranslation', 'GoogleAppIndexingWarning'
+    }
+
+    defaultConfig {
+        // TODO: Remove comment marks to enable
+        /*
+        manifestPlaceholders = [onesignal_app_id               : "abcd-1234-efgh-5678",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "1234567890"]
+                                */
+
+        applicationId details.appGroup + "." + details.appId.toLowerCase() + ".ab"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+        vectorDrawables.useSupportLibrary = true
+        proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/core_debug.kotlin_module'
+        pickFirst 'META-INF/core_release.kotlin_module'
+        pickFirst 'META-INF/library_debug.kotlin_module'
+        pickFirst 'META-INF/library_release.kotlin_module'
+    }
+}
+
+dependencies {
+    implementation project(path: ':library')
+    // TODO: Remove comment marks to enable
+    // implementation libraries.oneSignal
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains("lint") || task.name.contains("test")) {
+        task.enabled = false
+    }
+}
